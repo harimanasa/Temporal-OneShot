@@ -8,10 +8,10 @@ flowchart LR
   Lib --> Plan["OneShotSpec<br/>every=1000ms<br/>offset=runAt % 1000<br/>startAt=runAt<br/>endAt=runAt+1ms<br/>remainingActions=1"]
   Plan --> Client["Temporal Schedule Client<br/>mock or live SDK"]
   Client --> Server["Temporal Server<br/>Schedule Service"]
-  Server --> Worker["TypeScript Worker<br/>measurement-queue-live"]
-  Worker --> Workflow["DcrSummaryStatsWorkflow"]
+  Server --> Worker["TypeScript Worker<br/>oneshot-task-queue-live"]
+  Worker --> Workflow["OneShotDemoWorkflow"]
   Workflow --> A1["validateInput"]
-  Workflow --> A2["generateSummaryStats"]
+  Workflow --> A2["runBusinessTask"]
   Workflow --> A3["publishResult"]
   Server --> UI["Temporal UI<br/>proof: schedule + workflow history"]
 ```
@@ -35,8 +35,8 @@ sequenceDiagram
   App->>Temporal: createSchedule(spec, remainingActions=1)
   Temporal-->>App: nextFireTime
   Temporal->>Worker: schedule fires workflow task
-  Worker->>Workflow: DcrSummaryStatsWorkflow(input)
-  Workflow-->>Worker: summary stats complete
+  Worker->>Workflow: OneShotDemoWorkflow(input)
+  Workflow-->>Worker: one-shot job complete
   App->>Temporal: read schedule recent actions
   Temporal-->>App: actual workflow id
   App->>Temporal: await workflow result

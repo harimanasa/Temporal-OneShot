@@ -46,7 +46,7 @@ export class LiveTemporalScheduleClient implements TemporalScheduleClient {
           workflowType: spec.workflowType,
           workflowId: spec.workflowId,
           taskQueue: spec.taskQueue,
-          args: [{ measurementId: "demo-measurement-001", source: "temporal-live" }],
+          args: [{ requestId: "demo-request-001", source: "temporal-live" }],
         },
         policies: {
           overlap: ScheduleOverlapPolicy.SKIP,
@@ -169,11 +169,11 @@ export async function waitForWorkflowResult(
 export function buildLiveDemoInput(): ScheduleOnceInput {
   const runAtMs = Math.ceil((Date.now() + 8_000) / 1_000) * 1_000;
   return {
-    workflowType: "DcrSummaryStatsWorkflow",
-    workflowId: `summary-stats-live-${runAtMs}`,
-    taskQueue: "measurement-queue-live",
+    workflowType: "OneShotDemoWorkflow",
+    workflowId: `request-live-${runAtMs}`,
+    taskQueue: "oneshot-task-queue-live",
     runAt: new Date(runAtMs),
-    args: [{ measurementId: "demo-measurement-001", source: "temporal-live" }],
+    args: [{ requestId: "demo-request-001", source: "temporal-live" }],
   };
 }
 

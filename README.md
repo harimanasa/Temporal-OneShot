@@ -43,9 +43,9 @@ The live demo creates a real Temporal Schedule, starts a TypeScript worker, wait
 
 ```ts
 await scheduleOnce({
-  workflowType: "DcrSummaryStatsWorkflow",
-  workflowId: "summary-stats-123",
-  taskQueue: "measurement-queue",
+  workflowType: "OneShotDemoWorkflow",
+  workflowId: "request-123",
+  taskQueue: "oneshot-task-queue",
   runAt: new Date("2026-05-10T10:00:00.123Z"),
 });
 ```

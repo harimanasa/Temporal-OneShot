@@ -1,21 +1,21 @@
-export type SummaryStatsInput = {
-  measurementId: string;
+export type OneShotInput = {
+  requestId: string;
   source: string;
 };
 
 const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export async function validateInput(input: SummaryStatsInput): Promise<string> {
+export async function validateInput(input: OneShotInput): Promise<string> {
   await pause(150);
-  return `validateInput ok for ${input.measurementId}`;
+  return `validateInput ok for ${input.requestId}`;
 }
 
-export async function generateSummaryStats(input: SummaryStatsInput): Promise<string> {
+export async function runBusinessTask(input: OneShotInput): Promise<string> {
   await pause(150);
-  return `generateSummaryStats ok for ${input.source}`;
+  return `runBusinessTask ok for ${input.source}`;
 }
 
-export async function publishResult(input: SummaryStatsInput): Promise<string> {
+export async function publishResult(input: OneShotInput): Promise<string> {
   await pause(150);
-  return `publishResult ok for ${input.measurementId}`;
+  return `publishResult ok for ${input.requestId}`;
 }

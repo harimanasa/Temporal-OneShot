@@ -24,11 +24,11 @@ async function runDemo(): Promise<void> {
   console.log("");
 
   const input: ScheduleOnceInput = {
-    workflowType: "DcrSummaryStatsWorkflow",
-    workflowId: "summary-stats-demo-001",
-    taskQueue: "measurement-queue",
+    workflowType: "OneShotDemoWorkflow",
+    workflowId: "request-demo-001",
+    taskQueue: "oneshot-task-queue",
     runAt: new Date(Date.now() + 10_123),
-    args: [{ measurementId: "demo-measurement-001" }],
+    args: [{ requestId: "demo-request-001" }],
   };
 
   const spec = buildOneShotSpec(input);
@@ -49,9 +49,9 @@ async function runDemo(): Promise<void> {
 function runInvalidDemo(): void {
   try {
     buildOneShotSpec({
-      workflowType: "DcrSummaryStatsWorkflow",
-      workflowId: "summary-stats-demo-001",
-      taskQueue: "measurement-queue",
+      workflowType: "OneShotDemoWorkflow",
+      workflowId: "request-demo-001",
+      taskQueue: "oneshot-task-queue",
       runAt: new Date("not-a-date"),
     });
   } catch (error) {

@@ -20,7 +20,7 @@ export class MockTemporalClient {
     await pause(180);
     console.log("✅ Activity completed: validateInput");
     await pause(160);
-    console.log("✅ Activity completed: generateSummaryStats");
+    console.log("✅ Activity completed: runBusinessTask");
     await pause(160);
     console.log("✅ Activity completed: publishResult");
     await pause(160);

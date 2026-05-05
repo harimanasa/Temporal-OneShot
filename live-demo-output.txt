@@ -4,10 +4,10 @@ Connecting to Temporal at localhost:7233...
 ✅ Connected
 
 Temporal OneShot Plan
-Workflow: DcrSummaryStatsWorkflow
-Workflow ID: summary-stats-live-1778019878000
-Task Queue: measurement-queue-live
-Run At: 2026-05-05T22:24:38.000Z
+Workflow: OneShotDemoWorkflow
+Workflow ID: request-live-1778021096000
+Task Queue: oneshot-task-queue-live
+Run At: 2026-05-05T22:44:56.000Z
 
 Generated synthetic schedule spec:
 - every: 1000ms
@@ -19,11 +19,11 @@ Why this works:
 Temporal receives a tiny interval window aligned to the requested timestamp, so only one matching tick can occur.
 
 ✅ Live Temporal schedule created
-Schedule ID: oneshot-summary-stats-live-1778019878000
-Next fire time: 2026-05-05T22:24:38.000Z
+Schedule ID: oneshot-request-live-1778021096000
+Next fire time: 2026-05-05T22:44:56.000Z
 
 ⏳ Waiting for Temporal to fire the schedule...
-🔥 Temporal fired workflow: DcrSummaryStatsWorkflow
-📦 Workflow ID: summary-stats-live-1778019878000-2026-05-05T22:24:38Z
-🎉 Workflow result: summary stats complete for demo-measurement-001
+🔥 Temporal fired workflow: OneShotDemoWorkflow
+📦 Workflow ID: request-live-1778021096000-2026-05-05T22:44:56Z
+🎉 Workflow result: one-shot job complete for demo-request-001
 🧹 OneShot schedule consumed its single remaining action

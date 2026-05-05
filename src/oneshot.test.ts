@@ -14,9 +14,9 @@ function testBuildsSyntheticOneShotSpec(): void {
   const runAt = new Date("2026-05-10T10:00:00.123Z");
 
   const spec = buildOneShotSpec({
-    workflowType: "DcrSummaryStatsWorkflow",
-    workflowId: "summary-stats-123",
-    taskQueue: "measurement-queue",
+    workflowType: "OneShotDemoWorkflow",
+    workflowId: "request-123",
+    taskQueue: "oneshot-task-queue",
     runAt,
   });
 
@@ -32,9 +32,9 @@ function testRejectsInvalidRunAt(): void {
   assert.throws(
     () =>
       buildOneShotSpec({
-        workflowType: "DcrSummaryStatsWorkflow",
-        workflowId: "summary-stats-123",
-        taskQueue: "measurement-queue",
+        workflowType: "OneShotDemoWorkflow",
+        workflowId: "request-123",
+        taskQueue: "oneshot-task-queue",
         runAt: new Date("not-a-date"),
       }),
     /runAt is not a valid date/,
@@ -46,8 +46,8 @@ function testRejectsBlankWorkflowFields(): void {
     () =>
       buildOneShotSpec({
         workflowType: "",
-        workflowId: "summary-stats-123",
-        taskQueue: "measurement-queue",
+        workflowId: "request-123",
+        taskQueue: "oneshot-task-queue",
         runAt: new Date(Date.now() + 10_000),
       }),
     /workflowType must be non-empty/,
@@ -56,15 +56,15 @@ function testRejectsBlankWorkflowFields(): void {
 
 async function testScheduleOnceUsesClient(): Promise<void> {
   const input = {
-    workflowType: "DcrSummaryStatsWorkflow",
-    workflowId: "summary-stats-123",
-    taskQueue: "measurement-queue",
+    workflowType: "OneShotDemoWorkflow",
+    workflowId: "request-123",
+    taskQueue: "oneshot-task-queue",
     runAt: new Date(Date.now() + 10_000),
   };
 
   const result = await scheduleOnce(input, new MockTemporalClient());
 
-  assert.equal(result.scheduleId, "oneshot-summary-stats-123");
+  assert.equal(result.scheduleId, "oneshot-request-123");
   assert.equal(result.nextFireTime, input.runAt.toISOString());
 }
 

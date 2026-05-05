@@ -3,14 +3,14 @@
 Creating fire-once schedule...
 
 Temporal OneShot Plan
-Workflow: DcrSummaryStatsWorkflow
-Workflow ID: summary-stats-demo-001
-Task Queue: measurement-queue
-Run At: 2026-05-05T22:07:27.860Z
+Workflow: OneShotDemoWorkflow
+Workflow ID: request-demo-001
+Task Queue: oneshot-task-queue
+Run At: 2026-05-05T22:42:29.789Z
 
 Generated synthetic schedule spec:
 - every: 1000ms
-- offset: 860ms
+- offset: 789ms
 - window: 1ms
 - expected fires: exactly 1
 
@@ -18,14 +18,14 @@ Why this works:
 Temporal receives a tiny interval window aligned to the requested timestamp, so only one matching tick can occur.
 
 ✅ Schedule created
-Schedule ID: oneshot-summary-stats-demo-001
-Next fire time: 2026-05-05T22:07:27.860Z
+Schedule ID: oneshot-request-demo-001
+Next fire time: 2026-05-05T22:42:29.789Z
 
 ⏳ Fast-forwarding demo clock...
-🔥 OneShot fired: DcrSummaryStatsWorkflow
-📦 Starting workflow execution: summary-stats-demo-001
+🔥 OneShot fired: OneShotDemoWorkflow
+📦 Starting workflow execution: request-demo-001
 ✅ Activity completed: validateInput
-✅ Activity completed: generateSummaryStats
+✅ Activity completed: runBusinessTask
 ✅ Activity completed: publishResult
 🎉 Workflow completed successfully
 🧹 OneShot schedule auto-closed after first fire

@@ -1,13 +1,13 @@
 import { proxyActivities } from "@temporalio/workflow";
 import type * as activities from "./activities.js";
 
-const { validateInput, generateSummaryStats, publishResult } = proxyActivities<typeof activities>({
+const { validateInput, runBusinessTask, publishResult } = proxyActivities<typeof activities>({
   startToCloseTimeout: "10 seconds",
 });
 
-export async function DcrSummaryStatsWorkflow(input: activities.SummaryStatsInput): Promise<string> {
+export async function OneShotDemoWorkflow(input: activities.OneShotInput): Promise<string> {
   await validateInput(input);
-  await generateSummaryStats(input);
+  await runBusinessTask(input);
   await publishResult(input);
-  return `summary stats complete for ${input.measurementId}`;
+  return `one-shot job complete for ${input.requestId}`;
 }
