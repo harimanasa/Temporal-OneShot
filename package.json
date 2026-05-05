@@ -1,0 +1,22 @@
+{
+  "name": "temporal-oneshot",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsx src/oneshot.test.ts",
+    "demo": "tsx src/cli.ts",
+    "demo:invalid": "tsx src/cli.ts invalid",
+    "demo:live": "tsx src/liveCli.ts"
+  },
+  "dependencies": {
+    "@temporalio/client": "^1.17.0",
+    "@temporalio/worker": "^1.17.0",
+    "@temporalio/workflow": "^1.17.0",
+    "tsx": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0"
+  }
+}

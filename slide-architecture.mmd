@@ -1,0 +1,11 @@
+flowchart LR
+  Dev["Developer App<br/>scheduleOnce(input)"] --> Lib["Temporal OneShot Library<br/>validate + build spec"]
+  Lib --> Plan["OneShotSpec<br/>every=1000ms<br/>offset=runAt % 1000<br/>startAt=runAt<br/>endAt=runAt+1ms<br/>remainingActions=1"]
+  Plan --> Client["Temporal Schedule Client<br/>mock or live SDK"]
+  Client --> Server["Temporal Server<br/>Schedule Service"]
+  Server --> Worker["TypeScript Worker<br/>measurement-queue-live"]
+  Worker --> Workflow["DcrSummaryStatsWorkflow"]
+  Workflow --> A1["validateInput"]
+  Workflow --> A2["generateSummaryStats"]
+  Workflow --> A3["publishResult"]
+  Server --> UI["Temporal UI<br/>proof: schedule + workflow history"]
