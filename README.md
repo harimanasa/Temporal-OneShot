@@ -50,7 +50,7 @@ await scheduleOnce({
 });
 ```
 
-## Hackathon Pitch
+## Big Point
 
 > Temporal OneShot makes delayed fire-once workflows simple and safe. Instead of requiring developers to reason about interval grids, offsets, and tiny execution windows, it provides a clean API that creates a validated one-time schedule, previews the generated spec, and demonstrates exactly one workflow execution.
 
